@@ -1,7 +1,15 @@
 import React from "react";
+import { ThemeProvider } from "styled-components";
+
+import GlobalStyles from "styles/global";
+import { defaultTheme } from "styles/themes/default";
 
 function App() {
-  return <h1>Teste</h1>;
+	return (
+		<ThemeProvider theme={defaultTheme}>
+			<GlobalStyles />
+		</ThemeProvider>
+	);
 }
 
 export default App;
