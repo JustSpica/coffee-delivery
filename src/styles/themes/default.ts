@@ -23,7 +23,6 @@ export const defaultTheme = {
 
 	fonts: {
 		default: "Roboto, sans-serif",
-		cursive: "Baloo 2",
 	},
 
 	fontSizes: {
@@ -47,6 +46,7 @@ export const defaultTheme = {
 		regular: 400,
 		semiBold: 600,
 		bold: 700,
+		extraBold: 800,
 	},
 
 	lineHeights: {
