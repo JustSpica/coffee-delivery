@@ -23,7 +23,7 @@ export const defaultTheme = {
 
 	fonts: {
 		default: "Roboto, sans-serif",
-		cursive: "Baloo 2, cursive",
+		cursive: "Baloo 2",
 	},
 
 	fontSizes: {
