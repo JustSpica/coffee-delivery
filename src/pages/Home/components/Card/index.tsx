@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Minus, Plus, ShoppingCartSimple } from "phosphor-react";
+import { ShoppingCartSimple } from "phosphor-react";
+
+import { ActionCount } from "components";
 
 import { CardAction, CardRoot } from "./styles";
 
@@ -37,15 +39,12 @@ export function Card({ amount, description, image, title }: CardCoffeesProps) {
 					}).format(valueAmount)}
 				</strong>
 				<div className="actionButtons">
-					<div className="countActions">
-						<button onClick={handleReductionCoffeeCount}>
-							<Minus size={14} weight="fill" />
-						</button>
-						<span>{coffeeCount}</span>
-						<button onClick={handleIncrementCoffeeCount}>
-							<Plus size={14} weight="bold" />
-						</button>
-					</div>
+					<ActionCount
+						onMinus={handleReductionCoffeeCount}
+						onPlus={handleIncrementCoffeeCount}
+					>
+						{coffeeCount}
+					</ActionCount>
 					<button>
 						<ShoppingCartSimple size={22} weight="bold" />
 					</button>
