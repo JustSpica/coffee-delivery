@@ -1,6 +1,9 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
+import { QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
+
+import { queryClient } from "api/query";
 
 import { Router } from "routes";
 
@@ -10,10 +13,12 @@ import { defaultTheme } from "styles/themes/default";
 function App() {
 	return (
 		<ThemeProvider theme={defaultTheme}>
-			<BrowserRouter>
-				<Router />
-				<GlobalStyles />
-			</BrowserRouter>
+			<QueryClientProvider client={queryClient}>
+				<BrowserRouter>
+					<Router />
+					<GlobalStyles />
+				</BrowserRouter>
+			</QueryClientProvider>
 		</ThemeProvider>
 	);
 }
