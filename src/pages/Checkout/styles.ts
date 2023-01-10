@@ -9,8 +9,14 @@ export const CheckoutRoot = styled.section`
 		grid-template-columns: 1fr 0.7fr;
 		gap: ${theme.space[8]};
 
-		h3 {
-			font-size: ${theme.fontSizes.lg};
+		.formSection {
+			display: flex;
+			flex-direction: column;
+			gap: ${theme.space[4]};
+
+			h3 {
+				font-size: ${theme.fontSizes.lg};
+			}
 		}
 	`}
 `;

@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 export const FormRoot = styled.section`
 	${({ theme }) => css`
 		width: 100%;
-		margin-top: ${theme.space[4]};
 		padding: ${theme.space[10]};
 
 		border-radius: ${theme.rounded.md};
