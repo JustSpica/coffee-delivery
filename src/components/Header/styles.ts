@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 export const HeaderRoot = styled.header`
@@ -42,7 +43,7 @@ interface CardButtonProps {
 	count?: number;
 }
 
-export const CartButton = styled.button<CardButtonProps>`
+export const CartButton = styled(Link)<CardButtonProps>`
 	${({ theme, count }) => css`
 		padding: ${theme.space[2]};
 		position: relative;
@@ -54,6 +55,13 @@ export const CartButton = styled.button<CardButtonProps>`
 
 		background-color: ${theme.colors["orange-100"]};
 		color: ${theme.colors["orange-400"]};
+
+		transition: all 150ms;
+
+		&:hover {
+			background-color: ${theme.colors["orange-400"]};
+			color: ${theme.colors.white};
+		}
 	`}
 `;
 

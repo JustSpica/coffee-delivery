@@ -24,6 +24,7 @@ export function Coffees() {
 			return response.data;
 		},
 		{
+			staleTime: 1000 * 60, // 1 minute
 			refetchOnWindowFocus: false,
 		},
 	);
