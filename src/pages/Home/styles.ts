@@ -1,4 +1,18 @@
-import styled, { css, DefaultTheme } from "styled-components";
+import styled, { css, DefaultTheme, keyframes } from "styled-components";
+
+const imageAnimation = keyframes`
+	0% {
+		transform: scale(0.95)
+	}
+
+	50% {
+		transform: scale(1.05) rotate(-5deg) translate(-5%)
+	}
+
+	100% {
+		transform: scale(0.95)
+	}
+`;
 
 export const HomeRoot = styled.main`
 	${({ theme }) => css`
@@ -11,11 +25,16 @@ export const Welcome = styled.section`
 	${({ theme }) => css`
 		width: 100%;
 		min-width: 1140px;
+		padding: ${theme.space[24]} 0;
 
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		gap: ${theme.space[14]};
+
+		img {
+			animation: ${imageAnimation} 10s ease-in-out infinite;
+		}
 	`}
 `;
 
