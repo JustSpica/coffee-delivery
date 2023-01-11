@@ -4,9 +4,15 @@ import { MapPin, ShoppingCart } from "phosphor-react";
 
 import coffeeDeliveryLogo from "assets/svg/coffee-delivery-logo.svg";
 
+import { useCoffeContext } from "contexts/CoffeeContext";
+
 import { CartButton, CartCount, HeaderRoot, Location } from "./styles";
 
 export function Header() {
+	const { coffees } = useCoffeContext();
+
+	const hasCoffeAddedInCart = coffees.length !== 0;
+
 	return (
 		<HeaderRoot>
 			<Link to="/">
@@ -18,7 +24,8 @@ export function Header() {
 					<span>Porto Alegre, RS</span>
 				</Location>
 				<CartButton to="/checkout">
-					<CartCount>3</CartCount>
+					{hasCoffeAddedInCart && <CartCount>{coffees.length}</CartCount>}
+
 					<ShoppingCart size={24} weight="fill" />
 				</CartButton>
 			</div>

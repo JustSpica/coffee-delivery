@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Check, ShoppingCartSimple } from "phosphor-react";
 
+import { useCoffeContext } from "contexts/CoffeeContext";
+
 import { ActionCount } from "components";
 
 import { CardAction, CardRoot, CartButton, Toast } from "./styles";
@@ -13,10 +15,11 @@ export interface CardCoffeesProps {
 }
 
 export function Card({ amount, description, image, title }: CardCoffeesProps) {
-	const [valueAmount, setValueAmount] = useState(amount);
+	const [coffeeAmount, setCoffeeAmount] = useState(amount);
 	const [coffeeCount, setCoffeeCount] = useState(1);
-
 	const [isToastOpen, setIsToastOpen] = useState(false);
+
+	const { handleAddCoffeeToCart } = useCoffeContext();
 
 	function handleShowToast() {
 		setIsToastOpen(true);
@@ -28,21 +31,27 @@ export function Card({ amount, description, image, title }: CardCoffeesProps) {
 		}, 1000 * 2.5);
 	}
 
-	function handleIncrementCoffeeCount() {
-		if (coffeeCount === 10) return;
+	function handleClickButtonCart() {
+		handleShowToast();
+		handleAddCoffeeToCart({
+			amount: Number(coffeeAmount.toFixed(2)),
+			count: coffeeCount,
+			image,
+			title,
+		});
+	}
 
-		setValueAmount(amount * (coffeeCount + 1));
+	function handleIncrementCoffeeCount() {
+		setCoffeeAmount(amount * (coffeeCount + 1));
 		setCoffeeCount(prevState => prevState + 1);
 	}
 
 	function handleReductionCoffeeCount() {
 		if (coffeeCount === 1) return;
 
-		setValueAmount(amount * (coffeeCount - 1));
+		setCoffeeAmount(amount * (coffeeCount - 1));
 		setCoffeeCount(prevState => prevState - 1);
 	}
-
-	console.log(isToastOpen);
 
 	return (
 		<CardRoot>
@@ -54,7 +63,7 @@ export function Card({ amount, description, image, title }: CardCoffeesProps) {
 					{new Intl.NumberFormat("pt-BR", {
 						style: "currency",
 						currency: "BRL",
-					}).format(valueAmount)}
+					}).format(coffeeAmount)}
 				</strong>
 				<div className="actionButtons">
 					<ActionCount
@@ -63,7 +72,10 @@ export function Card({ amount, description, image, title }: CardCoffeesProps) {
 					>
 						{coffeeCount}
 					</ActionCount>
-					<CartButton onClick={handleShowToast}>
+					<CartButton
+						title="Adicionar ao carrinho"
+						onClick={handleClickButtonCart}
+					>
 						<ShoppingCartSimple size={22} weight="bold" />
 						{isToastOpen && (
 							<Toast>
