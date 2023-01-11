@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Check, ShoppingCartSimple } from "phosphor-react";
 
-import { useCoffeContext } from "contexts/CoffeeContext";
+import { usePaymentContext } from "contexts/PaymentContext";
 
 import { ActionCount } from "components";
 
@@ -19,7 +19,7 @@ export function Card({ amount, description, image, title }: CardCoffeesProps) {
 	const [coffeeCount, setCoffeeCount] = useState(1);
 	const [isToastOpen, setIsToastOpen] = useState(false);
 
-	const { handleAddCoffeeToCart } = useCoffeContext();
+	const { handleAddCoffeeToCart } = usePaymentContext();
 
 	function handleShowToast() {
 		setIsToastOpen(true);

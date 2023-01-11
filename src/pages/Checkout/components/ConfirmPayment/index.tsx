@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useCoffeContext } from "contexts/CoffeeContext";
+import { usePaymentContext } from "contexts/PaymentContext";
 
 import {
 	ConfirmPaymentRoot,
@@ -13,7 +13,7 @@ import {
 import { CoffeesCard } from "../CoffeesCard";
 
 export function ConfirmPayment() {
-	const { coffees } = useCoffeContext();
+	const { coffees } = usePaymentContext();
 
 	const totalItemsAmount = coffees.reduce((accumulator, coffe) => {
 		return accumulator + coffe.amount;

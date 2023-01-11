@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 
 import { queryClient } from "api/query";
 
-import { CoffeeProvider } from "contexts/CoffeeContext";
+import { CoffeeProvider } from "contexts/PaymentContext";
 
 import { Router } from "routes";
 

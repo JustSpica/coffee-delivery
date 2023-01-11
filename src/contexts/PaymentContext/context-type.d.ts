@@ -7,11 +7,11 @@ export interface Coffees {
 	amount: number;
 }
 
-export interface CoffeeContextProps {
+export interface PaymentContextProps {
 	coffees: Coffees[];
 	handleAddCoffeeToCart: (coffee: Coffees) => void;
 }
 
-export interface CoffeeProviderProps {
+export interface PaymentProviderProps {
 	children: React.ReactNode;
 }

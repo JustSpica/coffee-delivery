@@ -4,12 +4,12 @@ import { MapPin, ShoppingCart } from "phosphor-react";
 
 import coffeeDeliveryLogo from "assets/svg/coffee-delivery-logo.svg";
 
-import { useCoffeContext } from "contexts/CoffeeContext";
+import { usePaymentContext } from "contexts/PaymentContext";
 
 import { CartButton, CartCount, HeaderRoot, Location } from "./styles";
 
 export function Header() {
-	const { coffees } = useCoffeContext();
+	const { coffees } = usePaymentContext();
 
 	const hasCoffeAddedInCart = coffees.length !== 0;
 

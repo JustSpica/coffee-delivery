@@ -1,15 +1,15 @@
 import {
-	CoffeActionProps,
-	CoffeActionTypesEnum,
-} from "../actions/coffee-action";
+	PaymentActionProps,
+	PaymentActionTypesEnum,
+} from "../actions/payment-action";
 
 import { Coffees } from "../context-type";
 
-export function coffeeReducer(state: Coffees[], action: CoffeActionProps) {
+export function paymentReducer(state: Coffees[], action: PaymentActionProps) {
 	const { type, payload } = action;
 
 	switch (type) {
-		case CoffeActionTypesEnum.ADD_COFFEE_TO_CARD:
+		case PaymentActionTypesEnum.ADD_COFFEE_TO_CARD:
 			return [
 				...state.filter(coffee => {
 					return coffee.title !== payload.coffee.title;
