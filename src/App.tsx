@@ -5,6 +5,8 @@ import { ThemeProvider } from "styled-components";
 
 import { queryClient } from "api/query";
 
+import { CoffeeProvider } from "contexts/CoffeeContext";
+
 import { Router } from "routes";
 
 import GlobalStyles from "styles/global";
@@ -15,8 +17,10 @@ function App() {
 		<ThemeProvider theme={defaultTheme}>
 			<QueryClientProvider client={queryClient}>
 				<BrowserRouter>
-					<Router />
-					<GlobalStyles />
+					<CoffeeProvider>
+						<Router />
+						<GlobalStyles />
+					</CoffeeProvider>
 				</BrowserRouter>
 			</QueryClientProvider>
 		</ThemeProvider>
