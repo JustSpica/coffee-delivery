@@ -5,15 +5,22 @@ import { ActionCount } from "components";
 
 import { CoffeesCardAction, CoffeesCardRoot } from "./styles";
 
-export function CoffeesCard() {
+interface CoffeesCardProps {
+	amount: number;
+	count: number;
+	image: string;
+	title: string;
+}
+
+export function CoffeesCard({ amount, count, image, title }: CoffeesCardProps) {
 	return (
 		<CoffeesCardRoot>
 			<div className="info">
-				<img src="https://i.imgur.com/rFB0aBy.png" />
+				<img src={image} />
 				<CoffeesCardAction>
-					<span>Expresso Tradicional</span>
+					<span>{title}</span>
 					<div className="action">
-						<ActionCount>1</ActionCount>
+						<ActionCount>{count}</ActionCount>
 						<button className="removeButton">
 							<Trash />
 							Remover
@@ -25,7 +32,7 @@ export function CoffeesCard() {
 				{new Intl.NumberFormat("pt-BR", {
 					style: "currency",
 					currency: "BRL",
-				}).format(9.9)}
+				}).format(amount)}
 			</strong>
 		</CoffeesCardRoot>
 	);

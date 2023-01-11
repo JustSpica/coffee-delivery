@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useCoffeContext } from "contexts/CoffeeContext";
+
 import {
 	ConfirmPaymentRoot,
 	ConfirmButton,
@@ -11,12 +13,30 @@ import {
 import { CoffeesCard } from "../CoffeesCard";
 
 export function ConfirmPayment() {
+	const { coffees } = useCoffeContext();
+
+	const totalItemsAmount = coffees.reduce((accumulator, coffe) => {
+		return accumulator + coffe.amount;
+	}, 0);
+
+	const deliveryAmount = 3.5;
+
+	const totalAmount = totalItemsAmount + deliveryAmount;
+
 	return (
 		<ConfirmPaymentRoot>
-			<CoffeesCard />
-			<Divider />
-			<CoffeesCard />
-			<Divider />
+			{coffees.map(coffee => (
+				<>
+					<CoffeesCard
+						key={coffee.title}
+						amount={coffee.amount}
+						count={coffee.count}
+						image={coffee.image}
+						title={coffee.title}
+					/>
+					<Divider />
+				</>
+			))}
 			<div className="values">
 				<ItemsValue>
 					<span>Total de itens</span>
@@ -24,7 +44,7 @@ export function ConfirmPayment() {
 						{new Intl.NumberFormat("pt-BR", {
 							style: "currency",
 							currency: "BRL",
-						}).format(29.7)}
+						}).format(totalItemsAmount)}
 					</span>
 				</ItemsValue>
 				<ItemsValue>
@@ -33,7 +53,7 @@ export function ConfirmPayment() {
 						{new Intl.NumberFormat("pt-BR", {
 							style: "currency",
 							currency: "BRL",
-						}).format(3.5)}
+						}).format(deliveryAmount)}
 					</span>
 				</ItemsValue>
 				<TotalValue>
@@ -42,7 +62,7 @@ export function ConfirmPayment() {
 						{new Intl.NumberFormat("pt-BR", {
 							style: "currency",
 							currency: "BRL",
-						}).format(29.7)}
+						}).format(totalAmount)}
 					</span>
 				</TotalValue>
 			</div>
