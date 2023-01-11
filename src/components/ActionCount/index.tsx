@@ -5,8 +5,8 @@ import { ActionCountRoot } from "./styles";
 
 export interface ActionCountProps {
 	children: React.ReactNode;
-	onMinus: () => void;
-	onPlus: () => void;
+	onMinus?: () => void;
+	onPlus?: () => void;
 }
 
 export function ActionCount({ children, onMinus, onPlus }: ActionCountProps) {
