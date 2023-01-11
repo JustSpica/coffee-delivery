@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 
 import { queryClient } from "api/query";
 
-import { CoffeeProvider } from "contexts/PaymentContext";
+import { PaymentProvider } from "contexts/PaymentContext";
 
 import { Router } from "routes";
 
@@ -17,10 +17,10 @@ function App() {
 		<ThemeProvider theme={defaultTheme}>
 			<QueryClientProvider client={queryClient}>
 				<BrowserRouter>
-					<CoffeeProvider>
+					<PaymentProvider>
 						<Router />
 						<GlobalStyles />
-					</CoffeeProvider>
+					</PaymentProvider>
 				</BrowserRouter>
 			</QueryClientProvider>
 		</ThemeProvider>
