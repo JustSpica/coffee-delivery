@@ -10,7 +10,7 @@ import {
 	TotalValue,
 } from "./styles";
 
-import { CoffeesCard } from "../CoffeesCard";
+import * as CoffeesCard from "../CoffeesCard";
 
 export function ConfirmPayment() {
 	const { coffees } = usePaymentContext();
@@ -25,15 +25,16 @@ export function ConfirmPayment() {
 
 	return (
 		<ConfirmPaymentRoot>
-			{coffees.map(coffee => (
+			{coffees.map(coffe => (
 				<>
-					<CoffeesCard
-						key={coffee.title}
-						amount={coffee.amount}
-						count={coffee.count}
-						image={coffee.image}
-						title={coffee.title}
-					/>
+					<CoffeesCard.Root key={coffe.title}>
+						<CoffeesCard.ImageContainer image={coffe.image}>
+							<CoffeesCard.Info title={coffe.title}>
+								<CoffeesCard.Action>{coffe.count}</CoffeesCard.Action>
+							</CoffeesCard.Info>
+						</CoffeesCard.ImageContainer>
+						<CoffeesCard.Amount amount={coffe.amount} />
+					</CoffeesCard.Root>
 					<Divider />
 				</>
 			))}

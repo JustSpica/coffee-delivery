@@ -7,30 +7,32 @@ export const CoffeesCardRoot = styled.section`
 
 		display: flex;
 		justify-content: space-between;
-
-		.info {
-			display: flex;
-			align-items: center;
-
-			img {
-				width: 64px;
-			}
-		}
 	`}
 `;
 
-export const CoffeesCardAction = styled.div`
+export const CoffeesCardImage = styled.div`
+	display: flex;
+	align-items: center;
+
+	> img {
+		width: 64px;
+	}
+`;
+
+export const CoffeesCardInfo = styled.div`
 	${({ theme }) => css`
 		margin-left: ${theme.space[5]};
 
 		display: flex;
 		flex-direction: column;
 		gap: ${theme.space[2]};
+	`}
+`;
 
-		.action {
-			display: flex;
-			gap: ${theme.space[2]};
-		}
+export const CoffeesCardAction = styled.div`
+	${({ theme }) => css`
+		display: flex;
+		gap: ${theme.space[2]};
 
 		.removeButton {
 			padding: ${theme.space[2]};

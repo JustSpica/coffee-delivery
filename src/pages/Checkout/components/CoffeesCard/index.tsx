@@ -3,37 +3,76 @@ import { Trash } from "phosphor-react";
 
 import { ActionCount } from "components";
 
-import { CoffeesCardAction, CoffeesCardRoot } from "./styles";
+import {
+	CoffeesCardAction,
+	CoffeesCardImage,
+	CoffeesCardInfo,
+	CoffeesCardRoot,
+} from "./styles";
 
-interface CoffeesCardProps {
-	amount: number;
-	count: number;
+export interface CoffeCardRootProps {
+	children: React.ReactNode;
+}
+
+export function Root({ children }: CoffeCardRootProps) {
+	return <CoffeesCardRoot>{children}</CoffeesCardRoot>;
+}
+
+export interface CoffeCardImageProps {
+	children: React.ReactNode;
 	image: string;
+}
+
+export function ImageContainer({ children, image }: CoffeCardImageProps) {
+	return (
+		<CoffeesCardImage>
+			<img src={image} />
+			{children}
+		</CoffeesCardImage>
+	);
+}
+
+export interface CoffeCardInfoProps {
+	children: React.ReactNode;
 	title: string;
 }
 
-export function CoffeesCard({ amount, count, image, title }: CoffeesCardProps) {
+export function Info({ children, title }: CoffeCardInfoProps) {
 	return (
-		<CoffeesCardRoot>
-			<div className="info">
-				<img src={image} />
-				<CoffeesCardAction>
-					<span>{title}</span>
-					<div className="action">
-						<ActionCount>{count}</ActionCount>
-						<button className="removeButton">
-							<Trash />
-							Remover
-						</button>
-					</div>
-				</CoffeesCardAction>
-			</div>
-			<strong>
-				{new Intl.NumberFormat("pt-BR", {
-					style: "currency",
-					currency: "BRL",
-				}).format(amount)}
-			</strong>
-		</CoffeesCardRoot>
+		<CoffeesCardInfo>
+			<span>{title}</span>
+			{children}
+		</CoffeesCardInfo>
+	);
+}
+
+export interface CoffeCardActionProps {
+	children: React.ReactNode;
+}
+
+export function Action({ children }: CoffeCardActionProps) {
+	return (
+		<CoffeesCardAction>
+			<ActionCount>{children}</ActionCount>
+			<button className="removeButton">
+				<Trash />
+				Remover
+			</button>
+		</CoffeesCardAction>
+	);
+}
+
+export interface CoffeCardAmountProps {
+	amount: number;
+}
+
+export function Amount({ amount }: CoffeCardAmountProps) {
+	return (
+		<strong>
+			{new Intl.NumberFormat("pt-BR", {
+				style: "currency",
+				currency: "BRL",
+			}).format(amount)}
+		</strong>
 	);
 }
