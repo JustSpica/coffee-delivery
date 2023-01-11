@@ -17,11 +17,15 @@ export function Card({ amount, description, image, title }: CardCoffeesProps) {
 	const [coffeeCount, setCoffeeCount] = useState(1);
 
 	function handleIncrementCoffeeCount() {
+		if (coffeeCount === 10) return;
+
 		setValueAmount(amount * (coffeeCount + 1));
 		setCoffeeCount(prevState => prevState + 1);
 	}
 
 	function handleReductionCoffeeCount() {
+		if (coffeeCount === 1) return;
+
 		setValueAmount(amount * (coffeeCount - 1));
 		setCoffeeCount(prevState => prevState - 1);
 	}
