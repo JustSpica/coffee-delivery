@@ -1,4 +1,30 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+
+const toastAnimation = keyframes`
+	0% {
+		bottom: -150%;
+		right: -200%;
+		opacity: 0;
+	}
+
+	25% {
+		bottom: -100%;
+		right: -200%;
+		opacity: 1;
+	}
+
+	75% {
+		bottom: -100%;
+		right: -200%;
+		opacity: 1;
+	}
+
+	100% {
+		bottom: -150%;
+		right: -200%;
+		opacity: 0;
+	}
+`;
 
 export const CardRoot = styled.div`
 	${({ theme }) => css`
@@ -59,25 +85,52 @@ export const CardAction = styled.div`
 		.actionButtons {
 			display: flex;
 			gap: ${theme.space[2]};
-
-			> button {
-				padding: ${theme.space[2]};
-				display: flex;
-
-				border: 0;
-				border-radius: ${theme.rounded.md};
-
-				background-color: ${theme.colors["purple-900"]};
-				color: ${theme.colors.white};
-
-				cursor: pointer;
-
-				transition: all 150ms;
-
-				&:hover {
-					background-color: ${theme.colors["purple-600"]};
-				}
-			}
 		}
+	`}
+`;
+
+export const CartButton = styled.button`
+	${({ theme }) => css`
+		padding: ${theme.space[2]};
+		position: relative;
+
+		display: flex;
+
+		border: 0;
+		border-radius: ${theme.rounded.md};
+
+		background-color: ${theme.colors["purple-900"]};
+		color: ${theme.colors.white};
+
+		cursor: pointer;
+
+		transition: background 150ms;
+
+		&:hover {
+			background-color: ${theme.colors["purple-600"]};
+		}
+	`}
+`;
+
+export const Toast = styled.div`
+	${({ theme }) => css`
+		padding: ${theme.space[2]};
+		position: absolute;
+		bottom: -150%;
+		right: -200%;
+
+		display: flex;
+		align-items: center;
+		gap: ${theme.space[2]};
+
+		font-size: ${theme.fontSizes.sm};
+		white-space: nowrap;
+
+		border-radius: ${theme.rounded.md};
+
+		background-color: ${theme.colors["purple-900"]};
+
+		animation: ${toastAnimation} 2.5s ease;
+		pointer-events: none;
 	`}
 `;
