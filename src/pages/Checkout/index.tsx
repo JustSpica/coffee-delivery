@@ -17,7 +17,6 @@ export function Checkout() {
 			complement: "",
 			district: "",
 			houseNumber: "",
-			paymentType: "",
 			state: "",
 			street: "",
 		},

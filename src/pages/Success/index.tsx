@@ -4,8 +4,11 @@ import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 import successIllustration from "assets/svg/success-illustration.svg";
 
 import { CardInfo, Info, SuccessRoot } from "./styles";
+import { usePaymentContext } from "contexts/PaymentContext";
 
 export function Success() {
+	const { userData } = usePaymentContext();
+
 	return (
 		<SuccessRoot>
 			<div className="infoContainer">
@@ -21,9 +24,14 @@ export function Success() {
 						</div>
 						<div className="textInfo">
 							<span>
-								Entre em <strong>Rua João Daniel Martinelli, 102</strong>
+								Entrega em{" "}
+								<strong>
+									{userData.street}, {userData.houseNumber}
+								</strong>
 							</span>
-							<span>Farrapos - Porto Alegre, RS</span>
+							<span>
+								{userData.district} - {userData.city}, {userData.state}
+							</span>
 						</div>
 					</Info>
 					<Info>
@@ -41,7 +49,13 @@ export function Success() {
 						</div>
 						<div className="textInfo">
 							<span>Pagamento na entrega</span>
-							<strong>Cartão de Crédito</strong>
+							<strong>
+								{userData.paymentType === "credit"
+									? "Cartão de Crédito"
+									: userData.paymentType === "debit"
+									? "Cartão de Débito"
+									: "Dinheiro"}
+							</strong>
 						</div>
 					</Info>
 				</CardInfo>

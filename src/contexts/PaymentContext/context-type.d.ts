@@ -14,7 +14,7 @@ export interface UserData {
 	complement?: string;
 	district: string;
 	houseNumber: string;
-	paymentType: string;
+	paymentType: "credit" | "debit" | "money";
 	state: string;
 	street: string;
 }
