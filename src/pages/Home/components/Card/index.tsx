@@ -35,6 +35,7 @@ export function Card({ amount, description, image, title }: CardCoffeesProps) {
 		handleShowToast();
 		handleAddCoffeeToCart({
 			amount: Number(coffeeAmount.toFixed(2)),
+			baseAmount: amount,
 			count: coffeeCount,
 			image,
 			title,

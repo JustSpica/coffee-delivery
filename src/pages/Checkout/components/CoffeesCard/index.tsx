@@ -4,6 +4,7 @@ import { Trash } from "phosphor-react";
 import { ActionCount } from "components";
 
 import { CoffeesCardAction, CoffeesCardRoot } from "./styles";
+import { usePaymentContext } from "contexts/PaymentContext";
 
 interface CoffeesCardProps {
 	amount: number;
@@ -13,6 +14,9 @@ interface CoffeesCardProps {
 }
 
 export function CoffeesCard({ amount, count, image, title }: CoffeesCardProps) {
+	const { handleIncrementCoffeeAmount, handleReductionCoffeeAmount } =
+		usePaymentContext();
+
 	return (
 		<CoffeesCardRoot>
 			<div className="info">
@@ -20,7 +24,12 @@ export function CoffeesCard({ amount, count, image, title }: CoffeesCardProps) {
 				<CoffeesCardAction>
 					<span>{title}</span>
 					<div className="action">
-						<ActionCount>{count}</ActionCount>
+						<ActionCount
+							onPlus={() => handleIncrementCoffeeAmount(title)}
+							onMinus={() => handleReductionCoffeeAmount(title)}
+						>
+							{count}
+						</ActionCount>
 						<button className="removeButton">
 							<Trash />
 							Remover

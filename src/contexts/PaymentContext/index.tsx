@@ -6,7 +6,11 @@ import {
 	Coffees,
 } from "./context-type";
 
-import { addCoffeToCardAction } from "./actions/payment-action";
+import {
+	addCoffeToCardAction,
+	incrementCoffeeAmount,
+	reductionCoffeeAmount,
+} from "./actions/payment-action";
 import { paymentReducer } from "./reducers/payment-reducer";
 
 const PaymentContext = createContext({} as PaymentContextProps);
@@ -18,8 +22,23 @@ export function PaymentProvider({ children }: PaymentProviderProps) {
 		dispatch(addCoffeToCardAction(coffee));
 	}
 
+	function handleIncrementCoffeeAmount(title: string) {
+		dispatch(incrementCoffeeAmount(title));
+	}
+
+	function handleReductionCoffeeAmount(title: string) {
+		dispatch(reductionCoffeeAmount(title));
+	}
+
 	return (
-		<PaymentContext.Provider value={{ coffees, handleAddCoffeeToCart }}>
+		<PaymentContext.Provider
+			value={{
+				coffees,
+				handleAddCoffeeToCart,
+				handleIncrementCoffeeAmount,
+				handleReductionCoffeeAmount,
+			}}
+		>
 			{children}
 		</PaymentContext.Provider>
 	);
