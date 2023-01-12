@@ -2,6 +2,14 @@ import styled, { css } from "styled-components";
 
 export const FormRoot = styled.section`
 	${({ theme }) => css`
+		display: flex;
+		flex-direction: column;
+		gap: ${theme.space[8]};
+	`}
+`;
+
+export const FormSection = styled.div`
+	${({ theme }) => css`
 		width: 100%;
 		padding: ${theme.space[10]};
 
@@ -37,7 +45,7 @@ export const FormRoot = styled.section`
 	`}
 `;
 
-export const FormContainer = styled.form`
+export const FieldsSection = styled.div`
 	${({ theme }) => css`
 		width: 100%;
 		margin-top: ${theme.space[8]};
@@ -65,11 +73,7 @@ export const FormContainer = styled.form`
 	`}
 `;
 
-interface TextFieldProps {
-	optional?: boolean;
-}
-
-export const TextField = styled.input<TextFieldProps>`
+export const TextField = styled.input`
 	${({ theme }) => css`
 		width: 100%;
 		padding: ${theme.space[3]};
@@ -91,6 +95,99 @@ export const TextField = styled.input<TextFieldProps>`
 
 		&::placeholder {
 			color: ${theme.colors["zinc-600"]};
+		}
+	`}
+`;
+
+export const PaymentSection = styled.section`
+	${({ theme }) => css`
+		width: 100%;
+		padding: ${theme.space[10]};
+
+		border-radius: ${theme.rounded.md};
+
+		background-color: ${theme.colors["zinc-200"]};
+
+		header {
+			display: flex;
+			gap: ${theme.space[2]};
+
+			color: ${theme.colors["purple-600"]};
+		}
+
+		.titleForm {
+			display: flex;
+			flex-direction: column;
+
+			h4 {
+				font-size: ${theme.fontSizes.md};
+				font-weight: ${theme.fontWeights.regular};
+
+				color: ${theme.colors["zinc-800"]};
+			}
+
+			span {
+				font-size: ${theme.fontSizes.sm};
+				font-weight: ${theme.fontWeights.regular};
+
+				color: ${theme.colors["zinc-700"]};
+			}
+		}
+	`}
+`;
+
+export const PaymentAction = styled.div`
+	${({ theme }) => css`
+		width: 100%;
+		margin-top: ${theme.space[8]};
+
+		display: flex;
+		gap: ${theme.space[3]};
+
+		input {
+			display: none;
+		}
+
+		input:checked + label {
+			border-color: ${theme.colors["purple-600"]};
+
+			background-color: ${theme.colors["purple-200"]};
+		}
+
+		input:not(:checked) + label:hover {
+			background-color: ${theme.colors["zinc-500"]};
+
+			span {
+				color: ${theme.colors["zinc-800"]};
+			}
+		}
+
+		label {
+			padding: ${theme.space[4]};
+			flex: 1;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: ${theme.space[3]};
+
+			border: 1px solid ${theme.colors["zinc-500"]};
+			border-radius: ${theme.rounded.md};
+
+			background-color: ${theme.colors["zinc-400"]};
+			color: ${theme.colors["purple-600"]};
+
+			transition: all 150ms;
+
+			cursor: pointer;
+
+			span {
+				text-transform: uppercase;
+
+				color: ${theme.colors["zinc-700"]};
+
+				transition: all 150ms;
+			}
 		}
 	`}
 `;

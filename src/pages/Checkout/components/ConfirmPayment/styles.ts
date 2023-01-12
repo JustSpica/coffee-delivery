@@ -77,5 +77,10 @@ export const ConfirmButton = styled.button`
 		&:hover {
 			background-color: ${theme.colors["orange-400"]};
 		}
+
+		&:disabled {
+			background-color: ${theme.colors["zinc-500"]};
+			cursor: not-allowed;
+		}
 	`}
 `;

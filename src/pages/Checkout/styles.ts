@@ -5,11 +5,15 @@ export const CheckoutRoot = styled.section`
 		width: 100%;
 		padding: 0 ${theme.space[40]};
 
-		display: grid;
-		grid-template-columns: 1fr 0.7fr;
-		gap: ${theme.space[8]};
+		> form {
+			width: 100%;
 
-		.formSection {
+			display: grid;
+			grid-template-columns: 1fr 0.7fr;
+			gap: ${theme.space[8]};
+		}
+
+		.content {
 			display: flex;
 			flex-direction: column;
 			gap: ${theme.space[4]};

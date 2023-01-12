@@ -1,9 +1,10 @@
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer, useState } from "react";
 
 import {
 	PaymentProviderProps,
 	PaymentContextProps,
 	CoffeesCart,
+	UserData,
 } from "./context-type";
 
 import {
@@ -18,6 +19,7 @@ const PaymentContext = createContext({} as PaymentContextProps);
 
 export function PaymentProvider({ children }: PaymentProviderProps) {
 	const [coffeesCart, dispatch] = useReducer(paymentReducer, []);
+	const [userData, setUserData] = useState<UserData>({} as UserData);
 
 	function handleAddCoffeeToCart(coffee: CoffeesCart) {
 		dispatch(addCoffeeToCardAction(coffee));
@@ -35,14 +37,20 @@ export function PaymentProvider({ children }: PaymentProviderProps) {
 		dispatch(reductionCoffeeAmountAction(title));
 	}
 
+	function handleSaveUserData(user: UserData) {
+		setUserData(user);
+	}
+
 	return (
 		<PaymentContext.Provider
 			value={{
 				coffeesCart,
+				userData,
 				handleAddCoffeeToCart,
 				handleIncrementCoffeeAmount,
 				handleReductionCoffeeAmount,
 				handleDeleteCoffeeToCart,
+				handleSaveUserData,
 			}}
 		>
 			{children}

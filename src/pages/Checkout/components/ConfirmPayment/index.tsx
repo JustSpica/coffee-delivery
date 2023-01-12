@@ -12,7 +12,11 @@ import {
 
 import { CoffeesCard } from "./components/CoffeesCard";
 
-export function ConfirmPayment() {
+interface ConfirmPaymentProps {
+	isDisabled: boolean;
+}
+
+export function ConfirmPayment({ isDisabled }: ConfirmPaymentProps) {
 	const { coffeesCart } = usePaymentContext();
 
 	const totalItemsAmount = coffeesCart.reduce((accumulator, coffe) => {
@@ -66,7 +70,9 @@ export function ConfirmPayment() {
 					</span>
 				</TotalValue>
 			</div>
-			<ConfirmButton>Confirmar Pedido</ConfirmButton>
+			<ConfirmButton type="submit" disabled={isDisabled}>
+				Confirmar Pedido
+			</ConfirmButton>
 		</ConfirmPaymentRoot>
 	);
 }
