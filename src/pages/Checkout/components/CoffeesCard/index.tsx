@@ -14,8 +14,11 @@ interface CoffeesCardProps {
 }
 
 export function CoffeesCard({ amount, count, image, title }: CoffeesCardProps) {
-	const { handleIncrementCoffeeAmount, handleReductionCoffeeAmount } =
-		usePaymentContext();
+	const {
+		handleIncrementCoffeeAmount,
+		handleReductionCoffeeAmount,
+		handleDeleteCoffeeToCart,
+	} = usePaymentContext();
 
 	return (
 		<CoffeesCardRoot>
@@ -30,7 +33,10 @@ export function CoffeesCard({ amount, count, image, title }: CoffeesCardProps) {
 						>
 							{count}
 						</ActionCount>
-						<button className="removeButton">
+						<button
+							className="removeButton"
+							onClick={() => handleDeleteCoffeeToCart(title)}
+						>
 							<Trash />
 							Remover
 						</button>

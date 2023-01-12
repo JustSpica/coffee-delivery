@@ -1,30 +1,40 @@
 /* eslint-disable no-unused-vars */
-import { Coffees } from "../context-type";
+import { CoffeesCart } from "../context-type";
 
 export enum PaymentActionTypesEnum {
 	ADD_COFFEE_TO_CARD = "ADD_COFFEE_TO_CARD",
 	INCREMENT_COFFEE_AMOUNT = "INCREMENT_COFFEE_AMOUNT",
 	REDUCTION_COFFEE_AMOUNT = "REDUCTION_COFFEE_AMOUNT",
+	REMOVE_COFFEE_TO_CART = "REMOVE_COFFEE_TO_CART",
 }
 
 export interface PaymentActionProps {
 	type: PaymentActionTypesEnum;
 	payload: {
-		coffee: Coffees;
+		coffeesCart: CoffeesCart;
 		title: string;
 	};
 }
 
-export function addCoffeToCardAction(coffee: Coffees) {
+export function addCoffeeToCardAction(coffeesCart: CoffeesCart) {
 	return {
 		type: PaymentActionTypesEnum.ADD_COFFEE_TO_CARD,
 		payload: {
-			coffee,
+			coffeesCart,
 		},
 	} as PaymentActionProps;
 }
 
-export function incrementCoffeeAmount(title: string) {
+export function removeCoffeToCardAction(title: string) {
+	return {
+		type: PaymentActionTypesEnum.REMOVE_COFFEE_TO_CART,
+		payload: {
+			title,
+		},
+	} as PaymentActionProps;
+}
+
+export function incrementCoffeeAmountAction(title: string) {
 	return {
 		type: PaymentActionTypesEnum.INCREMENT_COFFEE_AMOUNT,
 		payload: {
@@ -33,7 +43,7 @@ export function incrementCoffeeAmount(title: string) {
 	} as PaymentActionProps;
 }
 
-export function reductionCoffeeAmount(title: string) {
+export function reductionCoffeeAmountAction(title: string) {
 	return {
 		type: PaymentActionTypesEnum.REDUCTION_COFFEE_AMOUNT,
 		payload: {

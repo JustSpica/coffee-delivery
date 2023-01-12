@@ -13,9 +13,9 @@ import {
 import { CoffeesCard } from "../CoffeesCard";
 
 export function ConfirmPayment() {
-	const { coffees } = usePaymentContext();
+	const { coffeesCart } = usePaymentContext();
 
-	const totalItemsAmount = coffees.reduce((accumulator, coffe) => {
+	const totalItemsAmount = coffeesCart.reduce((accumulator, coffe) => {
 		return accumulator + coffe.amount;
 	}, 0);
 
@@ -25,7 +25,7 @@ export function ConfirmPayment() {
 
 	return (
 		<ConfirmPaymentRoot>
-			{coffees.map(coffee => (
+			{coffeesCart.map(coffee => (
 				<>
 					<CoffeesCard
 						key={coffee.title}

@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface Coffees {
+export interface CoffeesCart {
 	amount: number;
 	baseAmount: number;
 	count: number;
@@ -9,10 +9,11 @@ export interface Coffees {
 }
 
 export interface PaymentContextProps {
-	coffees: Coffees[];
-	handleAddCoffeeToCart: (coffee: Coffees) => void;
+	coffeesCart: CoffeesCart[];
+	handleAddCoffeeToCart: (coffee: CoffeesCart) => void;
 	handleIncrementCoffeeAmount: (title: string) => void;
 	handleReductionCoffeeAmount: (title: string) => void;
+	handleDeleteCoffeeToCart: (title: string) => void;
 }
 
 export interface PaymentProviderProps {

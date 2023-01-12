@@ -9,9 +9,9 @@ import { usePaymentContext } from "contexts/PaymentContext";
 import { CartButton, CartCount, HeaderRoot, Location } from "./styles";
 
 export function Header() {
-	const { coffees } = usePaymentContext();
+	const { coffeesCart } = usePaymentContext();
 
-	const hasCoffeAddedInCart = coffees.length !== 0;
+	const hasCoffeAddedInCart = coffeesCart.length !== 0;
 
 	return (
 		<HeaderRoot>
@@ -24,7 +24,7 @@ export function Header() {
 					<span>Porto Alegre, RS</span>
 				</Location>
 				<CartButton to="/checkout">
-					{hasCoffeAddedInCart && <CartCount>{coffees.length}</CartCount>}
+					{hasCoffeAddedInCart && <CartCount>{coffeesCart.length}</CartCount>}
 
 					<ShoppingCart size={24} weight="fill" />
 				</CartButton>

@@ -3,40 +3,46 @@ import React, { createContext, useContext, useReducer } from "react";
 import {
 	PaymentProviderProps,
 	PaymentContextProps,
-	Coffees,
+	CoffeesCart,
 } from "./context-type";
 
 import {
-	addCoffeToCardAction,
-	incrementCoffeeAmount,
-	reductionCoffeeAmount,
+	addCoffeeToCardAction,
+	incrementCoffeeAmountAction,
+	reductionCoffeeAmountAction,
+	removeCoffeToCardAction,
 } from "./actions/payment-action";
 import { paymentReducer } from "./reducers/payment-reducer";
 
 const PaymentContext = createContext({} as PaymentContextProps);
 
 export function PaymentProvider({ children }: PaymentProviderProps) {
-	const [coffees, dispatch] = useReducer(paymentReducer, []);
+	const [coffeesCart, dispatch] = useReducer(paymentReducer, []);
 
-	function handleAddCoffeeToCart(coffee: Coffees) {
-		dispatch(addCoffeToCardAction(coffee));
+	function handleAddCoffeeToCart(coffee: CoffeesCart) {
+		dispatch(addCoffeeToCardAction(coffee));
+	}
+
+	function handleDeleteCoffeeToCart(title: string) {
+		dispatch(removeCoffeToCardAction(title));
 	}
 
 	function handleIncrementCoffeeAmount(title: string) {
-		dispatch(incrementCoffeeAmount(title));
+		dispatch(incrementCoffeeAmountAction(title));
 	}
 
 	function handleReductionCoffeeAmount(title: string) {
-		dispatch(reductionCoffeeAmount(title));
+		dispatch(reductionCoffeeAmountAction(title));
 	}
 
 	return (
 		<PaymentContext.Provider
 			value={{
-				coffees,
+				coffeesCart,
 				handleAddCoffeeToCart,
 				handleIncrementCoffeeAmount,
 				handleReductionCoffeeAmount,
+				handleDeleteCoffeeToCart,
 			}}
 		>
 			{children}
