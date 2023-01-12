@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ConfirmPayment, Form, PaymentCard } from "./components";
+import { ConfirmPayment, Form, PaymentTypeCard } from "./components";
 
 import { CheckoutRoot } from "./styles";
 
@@ -10,7 +10,7 @@ export function Checkout() {
 			<div className="formSection">
 				<h3>Complete seu pedido</h3>
 				<Form />
-				<PaymentCard />
+				<PaymentTypeCard />
 			</div>
 			<div className="formSection">
 				<h3>Cafés selecionados</h3>

@@ -10,7 +10,7 @@ import {
 	TotalValue,
 } from "./styles";
 
-import { CoffeesCard } from "../CoffeesCard";
+import { CoffeesCard } from "./components/CoffeesCard";
 
 export function ConfirmPayment() {
 	const { coffeesCart } = usePaymentContext();

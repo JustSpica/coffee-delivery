@@ -5,7 +5,7 @@ import { PaymentButton, PaymentCardAction, PaymentCardRoot } from "./styles";
 
 type PaymentType = "credit" | "debit" | "money" | null;
 
-export function PaymentCard() {
+export function PaymentTypeCard() {
 	const [payment, setPayment] = useState<PaymentType>(null);
 
 	function handleSelectPaymentType(type: PaymentType) {
