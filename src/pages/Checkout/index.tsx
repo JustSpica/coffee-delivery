@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 
 import { usePaymentContext } from "contexts/PaymentContext";
@@ -21,6 +22,7 @@ export function Checkout() {
 			street: "",
 		},
 	});
+	const navigate = useNavigate();
 	const { handleSaveUserData } = usePaymentContext();
 
 	const { formState, handleSubmit } = userDataForm;
@@ -28,6 +30,7 @@ export function Checkout() {
 
 	function handleConfirmPayment(data: UserData) {
 		handleSaveUserData(data);
+		navigate("/success");
 	}
 
 	return (
