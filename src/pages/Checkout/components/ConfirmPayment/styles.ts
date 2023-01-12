@@ -13,6 +13,16 @@ export const ConfirmPaymentRoot = styled.section`
 
 		background-color: ${theme.colors["zinc-200"]};
 
+		.coffees {
+			max-height: 360px;
+
+			display: flex;
+			flex-direction: column;
+			gap: ${theme.space[6]};
+
+			overflow-y: auto;
+		}
+
 		.values {
 			display: flex;
 			flex-direction: column;
@@ -44,12 +54,10 @@ export const TotalValue = styled(BaseItemsValue)`
 	`}
 `;
 
-export const Divider = styled.span`
+export const Divider = styled.div`
 	${({ theme }) => css`
 		width: 100%;
-		height: 1px;
-
-		display: block;
+		min-height: 1px;
 
 		background-color: ${theme.colors["zinc-400"]};
 	`}

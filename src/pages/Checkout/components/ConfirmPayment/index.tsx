@@ -29,18 +29,20 @@ export function ConfirmPayment({ isDisabled }: ConfirmPaymentProps) {
 
 	return (
 		<ConfirmPaymentRoot>
-			{coffeesCart.map(coffee => (
-				<>
-					<CoffeesCard
-						key={coffee.title}
-						amount={coffee.amount}
-						count={coffee.count}
-						image={coffee.image}
-						title={coffee.title}
-					/>
-					<Divider />
-				</>
-			))}
+			<div className="coffees">
+				{coffeesCart.map(coffee => (
+					<>
+						<CoffeesCard
+							key={coffee.title}
+							amount={coffee.amount}
+							count={coffee.count}
+							image={coffee.image}
+							title={coffee.title}
+						/>
+						<Divider />
+					</>
+				))}
+			</div>
 			<div className="values">
 				<ItemsValue>
 					<span>Total de itens</span>
